@@ -4,14 +4,25 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  test-secrets:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Say hello
+      - name: Check Trakt secrets
+        env:
+          TRAKT_CLIENT_ID: ${{ secrets.TRAKT_CLIENT_ID }}
+          TRAKT_CLIENT_SECRET: ${{ secrets.TRAKT_CLIENT_SECRET }}
         run: |
-          echo "🚀 Media Vault is alive!"
-          echo "Hello, Duden!"
+          if [ -n "$TRAKT_CLIENT_ID" ]; then
+            echo "✅ Trakt Client ID found"
+          else
+            echo "❌ Missing Client ID"
+            exit 1
+          fi
+
+          if [ -n "$TRAKT_CLIENT_SECRET" ]; then
+            echo "✅ Trakt Client Secret found"
+          else
+            echo "❌ Missing Client Secret"
+            exit 1
+          fi
