@@ -1,4 +1,4 @@
-   name: Media Vault
+name: Media Vault
 
 on:
   workflow_dispatch:
