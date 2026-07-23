@@ -1,25 +1,17 @@
 
-name: Media Vault
-
-on:
-  workflow_dispatch:
-
-jobs:
-  run-media-vault:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Run Media Vault
+6      - name: Test secrets
         env:
           TRAKT_CLIENT_ID: ${{ secrets.TRAKT_CLIENT_ID }}
           TRAKT_CLIENT_SECRET: ${{ secrets.TRAKT_CLIENT_SECRET }}
         run: |
-          python3 media_vault.py
+          if [ -z "$TRAKT_CLIENT_ID" ]; then
+            echo "❌ Client ID missing"
+          else
+            echo "✅ Client ID found"
+          fi
+
+          if [ -z "$TRAKT_CLIENT_SECRET" ]; then
+            echo "❌ Client Secret missing"
+          else
+            echo "✅ Client Secret found"
+          fi
