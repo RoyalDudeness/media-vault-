@@ -10,6 +10,7 @@ jobs:
 steps: Checkout repository
  actions/checkout@v4
 
+
  name: Run Media Vault
  env:
    TRAKT_CLIENT_ID: ${{ secrets.TRAKT_CLIENT_ID }}
