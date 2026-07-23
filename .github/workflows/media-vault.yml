@@ -15,6 +15,6 @@ jobs:
           TRAKT_CLIENT_ID: ${{ secrets.TRAKT_CLIENT_ID }}
           TRAKT_CLIENT_SECRET: ${{ secrets.TRAKT_CLIENT_SECRET }}
         run: |
-          python3 media_vault.py  
+          python3 media_vault.py
 
       
