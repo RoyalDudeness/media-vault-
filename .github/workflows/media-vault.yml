@@ -7,9 +7,8 @@ on:
 jobs:
   run-media-vault:
     runs-on: ubuntu-latest
-steps:
-11   Checkout repository
-12   actions/checkout@v4
+steps: Checkout repository
+ actions/checkout@v4
 
  name: Run Media Vault
  env:
