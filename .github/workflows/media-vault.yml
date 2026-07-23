@@ -1,5 +1,5 @@
 
-name: Media Vault
+          name: Media Vault
 
 on:
   workflow_dispatch:
@@ -7,16 +7,16 @@ on:
 jobs:
   run-media-vault:
     runs-on: ubuntu-latest
-steps: Checkout repository
- actions/checkout@v4
 
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
- name: Run Media Vault
- env:
-   TRAKT_CLIENT_ID: ${{ secrets.TRAKT_CLIENT_ID }}
-   TRAKT_CLIENT_SECRET: ${{ secrets.TRAKT_CLIENT_SECRET }}
+      - name: Run Media Vault
+        env:
+          TRAKT_CLIENT_ID: ${{ secrets.TRAKT_CLIENT_ID }}
+          TRAKT_CLIENT_SECRET: ${{ secrets.TRAKT_CLIENT_SECRET }}
         run: |
-          python3 media_vault.py
-            
+          python3 media_vault.py  
 
       
