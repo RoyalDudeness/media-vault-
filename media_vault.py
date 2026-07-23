@@ -1,19 +1,14 @@
+import requests
 
-import os
+headers = {
+    "trakt-api-key": client_id,
+    "trakt-api-version": "2"
+}
 
-print("🚀 Media Vault engine started")
+response = requests.get(
+    "https://api.trakt.tv/users/me",
+    headers=headers
+)
 
-client_id = os.getenv("TRAKT_CLIENT_ID")
-client_secret = os.getenv("TRAKT_CLIENT_SECRET")
-
-if client_id:
-    print("✅ Trakt Client ID loaded")
-else:
-    print("❌ Missing Trakt Client ID")
-
-if client_secret:
-    print("✅ Trakt Client Secret loaded")
-else:
-    print("❌ Missing Trakt Client Secret")
-
-print("Ready for Trakt connection")
+print(response.status_code)
+print(response.text)
